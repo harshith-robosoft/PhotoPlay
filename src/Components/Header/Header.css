@@ -1,0 +1,148 @@
+.header-main {
+  background-image: url("../../images/Mask.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: auto;
+  width: 100%;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+}
+
+.logo {
+  margin-top: 2%;
+  margin-left: 25%;
+}
+
+.header-inside {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 252px;
+  margin-top: 1%;
+  margin-left: 10%;
+  width: 80%;
+}
+
+.discover-the-worlds {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 3%;
+  height: 70px;
+  width: 564px;
+  color: #ffffff;
+  font-family: Roboto;
+  font-size: 30px;
+  font-weight: bold;
+  letter-spacing: 0;
+  line-height: 35px;
+  text-align: center;
+}
+.best-memories-online {
+  height: 24px;
+  margin-top: 2%;
+  color: #ffffff;
+  font-family: Roboto;
+  font-size: 18px;
+  letter-spacing: 0;
+  line-height: 24px;
+  text-align: center;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  height: 44px;
+  width: 43%;
+  margin-top: 1%;
+  background-color: #ffffff;
+}
+.search-input {
+  margin-left: 2%;
+  outline: none;
+  border: none;
+  height: 24px;
+  width: 83.5%;
+  opacity: 0.53;
+  color: #2f2f2f;
+  font-family: Roboto;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 24px;
+}
+.search-button {
+  border: none;
+  outline: none;
+  height: 40px;
+  width: 87px;
+  border-radius: 2px;
+  color: #ffffff;
+  background-color: #560014;
+  font-family: "Roboto";
+  font-size: 14px;
+  font-weight: bold;
+}
+.search-bar-mobile {
+  display: none;
+}
+
+@media screen and (max-width: 700px) {
+  .search-bar-mobile {
+    display: flex;
+
+    align-items: center;
+
+    height: 44px;
+
+    width: 110%;
+
+    margin-top: 6%;
+
+    border-radius: 4px;
+
+    background-color: #ffffff;
+  }
+
+  .search-bar {
+    display: none;
+  }
+
+  .search-icn {
+    margin-left: 4%;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .header-inside {
+    /* width: 100%; */
+  }
+
+  .header-main {
+    width: auto;
+  }
+
+  .logo {
+    margin-top: 5%;
+
+    margin-left: 5%;
+  }
+
+  .discover-the-worlds {
+    width: auto;
+
+    height: auto;
+
+    margin-top: 10%;
+  }
+
+  .search-bar {
+    display: none;
+  }
+
+  .search-icn {
+    margin-left: 4%;
+  }
+}

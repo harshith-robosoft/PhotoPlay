@@ -1,0 +1,20 @@
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 89px;
+  width: 100%;
+  background-color: #f2f2f2;
+  box-shadow: 0 1px 0 0 #a7a8a9;
+}
+.robosoft-technolog {
+  height: 28px;
+  width: 678px;
+  color: #bababa;
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 28px;
+  text-align: center;
+}

@@ -1,0 +1,124 @@
+.Favourites-div {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+
+  margin-top: 2%;
+  height: 680px;
+  overflow: auto;
+}
+.Favourites-container {
+  display: flex;
+  position: relative;
+  background-color: black;
+  margin-left: 1.5%;
+  margin-top: 1.5%;
+  height: 165px;
+  width: 220px;
+}
+
+.Favourites-container-div {
+  display: flex;
+
+  flex-wrap: wrap;
+}
+.profile-pic {
+  position: absolute;
+  margin-top: 125px;
+  margin-left: 10px;
+}
+.username {
+  height: 24px;
+  position: absolute;
+  margin-left: 50px;
+  margin-top: 130px;
+  color: #ffffff;
+  font-family: Roboto;
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: 24px;
+}
+.heart {
+  position: absolute;
+  margin-left: 190px;
+  margin-top: 10px;
+  height: 19px;
+  width: 20px;
+}
+
+.fav-image-size {
+  height: 165px;
+  width: 220px;
+}
+
+@media screen and (max-width:908px) {
+  .fav-image-size{
+  height: 191.25px;
+  width: 340px;
+}
+.Favourites-container {
+  display: flex;
+  position: relative;
+  background-color: black;
+  margin-top: 1.5%;
+  height: 191.25px;
+  width: 340px;
+  
+}}
+
+@media screen and (max-width:908px) {
+
+  .profile-pic {
+    position: absolute;
+    margin-top: 137px;
+    margin-left: 16px;
+  }
+  .username {
+    height: 24px;
+    position: absolute;
+   margin-left: 57px;
+      margin-top: 142px;
+    color: #ffffff;
+    font-family: Roboto;
+    font-size: 14px;
+    letter-spacing: 0;
+    line-height: 24px;
+  }
+  .heart {
+    position: absolute;
+    position: absolute;
+    margin-left: 303px;
+      margin-top: 14px;
+  }
+
+
+
+
+
+  .Favourites-container {
+    display: flex;
+    position: relative;
+    background-color: black;
+    margin-top: 1.5%;
+    height: 191.25px;
+    width: 340px;
+    
+}
+.Favourites-div {
+  width: 100%;
+}
+
+.Favourites-container-div{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.fav-image-size{
+  height: 191.25px;
+  width: 340px;
+}
+  
+
+  }
