@@ -75,16 +75,16 @@ const PhotoSlice = createSlice({
         state.liked.unshift(action.payload);
       }
     },
-    addToFav: (state, action) => {
+    addToFav: (state, {payload}) => {
       let isPresent = false;
       for (let item of state.favourites) {
-        if (item.id === action.payload) {
+        if (item.id === payload.id) {
           isPresent = true;
         }
       }
       if (!isPresent) {
         console.log("Got a hit");
-        state.favourites.unshift(action.payload);
+        state.favourites.unshift(payload);
       }
     },
     removeOneFromLiked: (state, action) => {
@@ -99,11 +99,15 @@ const PhotoSlice = createSlice({
     removeFromrecent: (state) => {
       state.recents = [];
     },
-    removeOneFromFav: (state, action) => {
+    removeOneFromFav: (state, {payload}) => {
       state.favourites = state.favourites.filter(
-        (place) => place.id !== action.payload.id
+        (place) => place.id !== payload.id
       );
+      // state.favourites = state.favourites.filter((data) => data.id !== action.payload.id);
     },
+    // removeAllFromFav: (state) => {
+    //   state.recents = [];
+    // },
   },
   extraReducers: {
     [fetchAsyncPhoto.pending]: () => {
@@ -145,6 +149,7 @@ export const {
   addToFav,
   removeFromFav,
   removeOneFromFav,
+  // removeAllFromFav,
   addSearch,
 } = PhotoSlice.actions;
 

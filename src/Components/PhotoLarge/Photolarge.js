@@ -1,6 +1,7 @@
 import React from "react";
 import "./Photolarge.css";
 import emptyheartlarge from "../../images/emptyheartlarge.png";
+import filledHeartlarge from "../../images/filledHeartLarge.png"
 import zoomin from "../../images/zoom-positive.png";
 import zoomout from "../../images/zoom-negative.png";
 import profilepiclarge from "../../images/profilepiclarge.png";
@@ -11,13 +12,16 @@ import { useDispatch, useSelector } from "react-redux";
 import imagelarge from "../../images/image-large.png";
 import arrow from "../../images/arrow back.png";
 import options from "../../images/more vert.png";
-import { getLarge } from "../../Features/PhotoSlice";
+import { addToFav, addToheart, getLarge, getLiked, removeOneFromFav, removeOneFromLiked } from "../../Features/PhotoSlice";
 
 export default function Photolarge() {
+  const [heartpressed, setHeartpressed] = useState(null);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const image = useSelector(getLarge);
-  console.log(image);
+  // console.log(image);
   const imagelink = image && image?.src && image?.src?.large;
+  const getlikeddata = useSelector(getLiked);
 
   return (
     <>
@@ -25,7 +29,28 @@ export default function Photolarge() {
         <img src={imagelink} className="photo-large"></img>
 
         <div className="photo-large-div-container">
-          <span className="photo-desc">{image && image?.alt}</span>
+          {/* <div className="descHeart-div"> */}
+          <span className="photo-desc">{image && image?.alt}</span>          
+          {/* <img className="heart-large-img" src={emptyheartlarge}></img> */}
+          <img
+            className="heart-large-img"
+            src={
+              getlikeddata?.includes(image?.id)
+                ? filledHeartlarge
+                : emptyheartlarge
+            }
+            onClick={() => {
+              if (!getlikeddata?.includes(image.id)) {
+                dispatch(addToheart(image?.id));
+                setHeartpressed(image?.id);
+                dispatch(addToFav(image));
+              } else {
+                dispatch(removeOneFromFav({ id: image?.id }));
+                dispatch(removeOneFromLiked(image?.id));
+              }
+            }}
+          ></img>
+          {/* </div> */}
           <img
             onClick={() => {
               navigate("/");
@@ -35,7 +60,6 @@ export default function Photolarge() {
             alt="pic"
           />
           <img className="options" src={options} alt="pic" />
-          <img className="heart-large-img" src={emptyheartlarge}></img>
           <div className="zoom-p">
             <div className="zoom-in">
               <img src={zoomin}></img>

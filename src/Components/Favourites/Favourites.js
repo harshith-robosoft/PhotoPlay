@@ -14,6 +14,7 @@ import {
   getLiked,
   removeOneFromFav,
   removeOneFromLiked,
+  removeAllFromFav,
 } from "../../Features/PhotoSlice";
 
 export default function Favourites() {
@@ -54,8 +55,9 @@ export default function Favourites() {
                 className="heart"
                 src={heart}
                 onClick={() => {
-                  dispatch(removeOneFromFav({}));
-                  dispatch(removeOneFromLiked());
+                  dispatch(removeOneFromFav({id: data.id}));
+                  dispatch(removeOneFromLiked(data.id));
+                  // dispatch(removeAllFromFav({}))
                 }}
               ></img>
             </div>

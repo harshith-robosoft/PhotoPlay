@@ -13,6 +13,8 @@ import {
   getFav,
   getLiked,
   getSearch,
+  removeFromFav,
+  removeOneFromLiked,
 } from "../../Features/PhotoSlice";
 
 export default function Photos() {
@@ -20,9 +22,10 @@ export default function Photos() {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const name = "cars";
+  const name = "bike";
   const data = useSelector(getSearch);
   const getlikeddata = useSelector(getLiked);
+  
   console.log(getlikeddata);
   const getfav = useSelector(getFav);
 
@@ -53,11 +56,16 @@ export default function Photos() {
                   <img
                     className="heart"
                     id={data?.id}
-                    src={getfav?.includes(data?.id) ? filledheart : heart}
+                    src={getlikeddata?.includes(data?.id) ? filledheart : heart}
                     onClick={() => {
-                      dispatch(addToheart(data?.id));
-                      setHeartpressed(data?.id);
-                      dispatch(addToFav(data));
+                      if (!getlikeddata?.includes(data.id)) {
+                        dispatch(addToheart(data?.id));
+                        setHeartpressed(data?.id);
+                        dispatch(addToFav(data));
+                      } else {
+                        dispatch(removeFromFav({ id: data?.id }));
+                        dispatch(removeOneFromLiked(data?.id));
+                      }
                     }}
                   ></img>
                 </div>

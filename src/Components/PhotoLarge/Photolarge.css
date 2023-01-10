@@ -1,7 +1,7 @@
 .photo-large-div {
   display: flex;
   position: relative;
-  margin-top: 5%;
+  margin-top: 4%;
   margin-bottom: 6%;
 }
 .photo-large {
@@ -13,9 +13,8 @@
   position: absolute;
   display: flex;
   flex-wrap: wrap;
-
   height: 150px;
-  width: 940px;
+  width: 100%;
 }
 .photo-desc {
   margin-left: 2%;
@@ -92,6 +91,15 @@
   @media screen and (max-width:950px){
     .photo-large{
       width: 100%;
+    }
+    .descHeart-div{
+
+    }
+    
+  }
+  @media screen and (max-width:950px) and (min-width:680px){
+    .heart-large-img{
+      margin-left: 0%;
     }
   }
   @media screen and (max-width:680px) {

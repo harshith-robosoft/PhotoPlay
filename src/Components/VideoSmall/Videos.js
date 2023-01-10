@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./Videos.css";
-
 import oval from "../../images/Oval.png";
 import heart from "../../images/Path-2.png";
 import videoimg from "../../images/video-rectangle.png";
@@ -14,6 +13,7 @@ import {
   fetchAsyncSearchVideo,
   fetchAsyncVideo,
   getFav,
+  getLiked,
   getVideos,
   removeOneFromFav,
   removeOneFromLiked,
@@ -24,16 +24,17 @@ export default function Videos() {
   const [videodata, setVideodata] = useState([]);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const name = "ocean";
+  const name = "nature";
 
   const getfav = useSelector(getFav);
   const data = useSelector(getVideos);
+  const getlikeddata = useSelector(getLiked);
   useEffect(() => {
     dispatch(fetchAsyncSearchVideo(name));
     setVideodata(data);
   }, [dispatch]);
 
-  console.log(data);
+  // console.log(data);
   return (
     <>
       {data && data?.videos ? (
@@ -51,16 +52,22 @@ export default function Videos() {
                       navigate("/Videolarge");
                     }}
                   ></img>
-                  <img src={data.user.url} className="profile-pic"></img>
+                  <img src={oval} className="profile-pic"></img>
                   <span className="username">{data.user.name}</span>
 
                   <img
                     className="heart"
-                    src={getfav?.includes(data.id) ? filledheart : heart}
+                    id={data?.id}
+                    src={getlikeddata?.includes(data?.id) ? filledheart : heart}
                     onClick={() => {
-                      dispatch(addToheart(data.id));
-                      setHeartpressed(data.id);
-                      dispatch(addToFav(data));
+                      if (!getlikeddata?.includes(data.id)) {
+                        dispatch(addToheart(data?.id));
+                        setHeartpressed(data?.id);
+                        dispatch(addToFav(data));
+                      } else {
+                        dispatch(removeOneFromFav({ id: data?.id }));
+                        dispatch(removeOneFromLiked(data?.id));
+                      }
                     }}
                   ></img>
                 </div>

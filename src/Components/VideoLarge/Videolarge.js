@@ -1,18 +1,22 @@
 import React, { useEffect, useState } from "react";
 import "./Videolarge.css";
+import filledHeartlarge from "../../images/filledHeartLarge.png"
 import emptyheartlarge from "../../images/emptyheartlarge.png";
 import profilepiclarge from "../../images/profilepiclarge.png";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { getLarge } from "../../Features/PhotoSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { addToFav, addToheart, getLarge, getLiked, removeOneFromFav, removeOneFromLiked } from "../../Features/PhotoSlice";
 import ReactPlayer from "react-player";
 import arrow from "../../images/arrow back.png";
 import options from "../../images/more vert.png";
 export default function Videolarge() {
   const [data, setData] = useState({});
+  const [heartpressed, setHeartpressed] = useState(null);
   const navigate = useNavigate();
+  const dispatch = useDispatch()
   const video = useSelector(getLarge);
-  console.log(video);
+  const getlikeddata = useSelector(getLiked);
+  // console.log(video);
 
   const videolink = video && video?.video_files?.[0]?.link;
   const video_desc = video && video?.url;
@@ -33,13 +37,28 @@ export default function Videolarge() {
             width="940px"
           />
           <div className="Video-large-div-container">
-            <div className="name-heart-top">
+
               <span className="Video-desc">{video && description?.[4]}</span>
-              <img
-                src={emptyheartlarge}
-                className="Video-heart-large-img"
-              ></img>
-            </div>
+            
+                <img
+            className="Video-heart-large-img"
+            src={
+              getlikeddata?.includes(video?.id)
+                ? filledHeartlarge
+                : emptyheartlarge
+            }
+            onClick={() => {
+              if (!getlikeddata?.includes(video.id)) {
+                dispatch(addToheart(video?.id));
+                setHeartpressed(video?.id);
+                dispatch(addToFav(video));
+              } else {
+                dispatch(removeOneFromFav({ id: video?.id }));
+                dispatch(removeOneFromLiked(video?.id));
+              }
+            }}
+          ></img>
+       
             <img
               onClick={() => {
                 navigate("/videos");
